@@ -1,5 +1,5 @@
 <footer class="bg-blue-600 text-white  mt-16 border-t border-gray-200">
-  <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-20 py-10">
+  <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-20 py-10">
     <div>
       <a href="<?php echo home_url(); ?>" class="text-white font-bold text-xl">
         E-sheba
@@ -21,19 +21,22 @@
     </div>
 
     <div>
-      <h3 class="text-xl font-semibold mb-3">Services</h3>
-      <ul class="space-y-2 text-sm">
-        <li><a href="#" class="hover:text-blue-600 transition">Digital Identity</a></li>
-        <li><a href="#" class="hover:text-blue-600 transition">E-Government</a></li>
-        <li><a href="#" class="hover:text-blue-600 transition">Support Center</a></li>
-        <li><a href="#" class="hover:text-blue-600 transition">FAQs</a></li>
-      </ul>
+      <h3 class="text-xl font-semibold mb-3">Links</h3>
+         <?php
+            wp_nav_menu(array(
+            'theme_location' => 'footer',
+            'container'      => false,
+            'menu_class'     => 'space-y-2 text-sm footer-menu',
+            'items_wrap'     => '<ul class="%2$s">%3$s</ul>',
+            'fallback_cb'    => false,
+            ));
+        ?>
     </div>
 
     <!-- Contact Info -->
     <div>
       <h3 class="text-xl font-semibold mb-3">Address</h3>
-        <div class="w-70 h-35 bg-gray-300 rounded-2xl"></div>
+        <div class="w-full h-50 lg:w-75 lg:h-35   bg-gray-300 rounded-2xl"></div>
     </div>
   </div>
     <hr class="border-gray-200">
