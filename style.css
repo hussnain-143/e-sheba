@@ -1,0 +1,52 @@
+/*
+Theme Name: E-Seheba
+Theme URI: https://example.com/e-seheba
+Author: Hussnain Ahmed
+Author URI: https://example.com
+Description: E-Seheba is a clean, professional, and fully responsive WordPress theme designed for medical clinics, hospitals, healthcare providers, and health-related landing pages. It features an elegant layout, easy-to-navigate structure, modern typography, and sections for services, testimonials, appointment booking, and contact information. Ideal for creating a strong first impression and increasing user engagement.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: e-seheba
+Tags: medical, landing page, healthcare, responsive, clean design, one-page, modern, business, appointment
+*/
+
+.menu-items,
+.menu-items li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-items li {
+  display: inline-block;
+}
+
+.menu-items li a {
+  text-decoration: none;
+  color: black; 
+  padding: 8px 0px;
+  transition: color 0.3s ease;
+  margin: 0 10px;
+}
+
+
+.menu-items li a:hover {
+  color: #2563eb;
+  border-bottom: 2px solid #2563eb;
+}
+
+.menu-items li.current-menu-item a {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+#mobile-menu .menu-items {
+  flex-direction: column;
+  gap: 12px;
+}
+
+#mobile-menu .menu-items li {
+  display: block;
+  width: 100%;
+}
