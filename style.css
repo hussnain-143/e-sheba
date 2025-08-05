@@ -11,6 +11,7 @@ Text Domain: e-seheba
 Tags: medical, landing page, healthcare, responsive, clean design, one-page, modern, business, appointment
 */
 
+/* Header */
 .menu-items,
 .menu-items li {
   list-style: none;
@@ -49,4 +50,13 @@ Tags: medical, landing page, healthcare, responsive, clean design, one-page, mod
 #mobile-menu .menu-items li {
   display: block;
   width: 100%;
+}
+
+/* Footer */
+.footer-menu li {
+  list-style: none;
+}
+
+.footer-menu li a:hover {
+  color: oklch(70.7% 0.165 254.624);
 }
