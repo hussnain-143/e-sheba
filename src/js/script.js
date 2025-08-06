@@ -27,15 +27,15 @@
              * Bind modal open/close events
              */
             bindModalEvents: function () {
-                let self = this;
 
-                $( '.open-modal-btn' ).on( 'click', function () {
-                    let index = $( this ).data( 'index' ); 
-                    self.openModal( index );
+                let self = this;
+                $( '.specialist-card' ).on( 'click', function () {
+                    let title = $( this ).data( 'title' );
+                    let description = $( this ).data( 'description' );
+                    self.openModal( title, description );
                 });
 
-              
-                $('.close-modal-btn').on('click', function () {
+                $( '.close-modal-btn' ).on( 'click', function () {
                     self.closeModal();
                 });
             },
@@ -43,8 +43,10 @@
             /**
              * Show the modal
              */
-            openModal: function (index) {
+            openModal: function ( title, description ) {
                 $( '#specialist-modal' ).removeClass( 'hidden' );
+                $( '#modal-title').text( title );
+                $( '#modal-description').text( description );
             },
 
             /**
