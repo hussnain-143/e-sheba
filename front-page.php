@@ -7,7 +7,7 @@ get_header();
 ?>
 
 <!-- Hero Section -->
-<section class="relative bg-blue-50 text-gray-900 pt-24 pb-0 overflow-hidden">
+<section class="relative bg-blue-50 text-gray-900 pb-0 overflow-hidden">
 
   <!-- Background Circle -->
   <div class="size-250 bg-blue-200 right-0 top-[5rem] z-0 rounded-full absolute "></div>
@@ -16,13 +16,19 @@ get_header();
   <div class="max-w-[1200px] mb-10 lg:mb-0 relative z-40 container mx-auto px-4 flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-30">
 
     <!-- Left Content -->
-    <div class=" text-center mb-10 lg:text-left flex-1">
+    <div class=" text-center mb-10 lg:text-left flex-1 space-y-15">
       <?php if (function_exists('get_field')) : ?>
         <h1 class="text-4xl md:text-5xl font-bold leading-tight">
-          <?php echo esc_html(get_field('hero_title')); ?>
+            <?php 
+                $title = get_field('hero_title') ?: 'Get the Best Medical Support Instantly';
+                echo esc_html($title); 
+            ?>  
         </h1>
         <p class="mt-4 text-gray-600">
-          <?php echo esc_html(wp_trim_words(get_field('hero_description'), 12)); ?>
+            <?php 
+                $desc = get_field('hero_description') ?: 'Find expert doctors and medical specialists online 24/7 to support your healthcare journey.';
+                echo esc_html(wp_trim_words($desc, 12)); 
+            ?>
         </p>
       <?php endif; ?>
 
@@ -56,11 +62,18 @@ get_header();
 
     <!-- Right Image -->
     <div class="flex-1 flex justify-center lg:justify-end relative lg:bottom-[-200px]">
-      <?php
-      $hero_image = get_field('hero_image');
-      if ($hero_image) : ?>
-        <img src="<?php echo esc_url($hero_image['url']); ?>" alt="<?php echo esc_attr($hero_image['alt']); ?>" class="w-[90%] max-w-sm lg:max-w-md relative z-10 object-contain">
-      <?php endif; ?>
+        <?php
+            $hero_image = get_field('hero_image');
+
+            $img_url = is_array($hero_image) && !empty($hero_image['url'])
+                ? $hero_image['url']
+                : 'https://i.pinimg.com/474x/28/90/51/28905133f922c06fd8a2c8a72ea3266a.jpg';
+
+            $img_alt = is_array($hero_image) && !empty($hero_image['alt'])
+                ? $hero_image['alt']
+                : 'Hero image';
+        ?>
+        <img src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($img_alt); ?>" class="w-[90%] max-w-sm lg:max-w-md relative z-10 object-contain rounded-2xl hover:shadow-2xl hover:scale-105 transition duration-500">
     </div>
   </div>
 
@@ -87,70 +100,78 @@ get_header();
 </section>
 
 <!-- Consulting Specialists -->
-<section class="py-20 ">
+<section class="py-20">
   <div class="max-w-[1200px] container mx-auto px-4">
     <h2 class="text-4xl font-bold mb-12">Our Consulting Specialists</h2>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
 
       <!-- Specialist A -->
+      <?php 
+        $title_a = get_field('specialists_title_a') ?: 'Cardiology Specialist';
+        $desc_a  = get_field('consulting_specialists_description_a') ?: 'Expert in heart-related treatments and diagnostics.';
+      ?>
       <div
         class="specialist-card cursor-pointer bg-white p-6 rounded-2xl border border-gray-200 shadow hover:bg-blue-600 hover:text-white transition duration-300"
-        data-title="<?php echo esc_attr(get_field('specialists_title_a')); ?>"
-        data-description="<?php echo esc_attr(get_field('consulting_specialists_description_a')); ?>"
+        data-title="<?php echo esc_attr($title_a); ?>"
+        data-description="<?php echo esc_attr($desc_a); ?>"
       >
         <div class="size-12 bg-blue-100 rounded-full text-blue-600 flex justify-center items-center mb-5">
           <span class="dashicons dashicons-heart text-[60px] leading-none"></span>
         </div>
-        <h3 class="font-bold text-lg mb-2"><?php echo esc_html(get_field('specialists_title_a')); ?></h3>
-        <p class="text-sm">
-          <?php echo esc_html( wp_trim_words( get_field('consulting_specialists_description_a'), 10, '...' ) ); ?>
-        </p>
+        <h3 class="font-bold text-lg mb-2"><?php echo esc_html($title_a); ?></h3>
+        <p class="text-sm"><?php echo esc_html(wp_trim_words($desc_a, 10, '...')); ?></p>
       </div>
 
       <!-- Specialist B -->
+      <?php 
+        $title_b = get_field('specialists_title_b') ?: 'Neurology Specialist';
+        $desc_b  = get_field('consulting_specialists_description_b') ?: 'Provides expert care for neurological conditions and disorders.';
+      ?>
       <div
         class="specialist-card cursor-pointer bg-white p-6 rounded-2xl border border-gray-200 shadow hover:bg-blue-600 hover:text-white transition duration-300"
-        data-title="<?php echo esc_attr(get_field('specialists_title_b')); ?>"
-        data-description="<?php echo esc_attr(get_field('consulting_specialists_description_b')); ?>"
+        data-title="<?php echo esc_attr($title_b); ?>"
+        data-description="<?php echo esc_attr($desc_b); ?>"
       >
         <div class="size-12 bg-blue-100 rounded-full text-blue-600 flex justify-center items-center mb-5">
           <span class="dashicons dashicons-heart text-[60px] leading-none"></span>
         </div>
-        <h3 class="font-bold text-lg mb-2"><?php echo esc_html(get_field('specialists_title_b')); ?></h3>
-        <p class="text-sm">
-          <?php echo esc_html( wp_trim_words( get_field('consulting_specialists_description_b'), 10, '...' ) ); ?>
-        </p>
+        <h3 class="font-bold text-lg mb-2"><?php echo esc_html($title_b); ?></h3>
+        <p class="text-sm"><?php echo esc_html(wp_trim_words($desc_b, 10, '...')); ?></p>
       </div>
 
       <!-- Specialist C -->
+      <?php 
+        $title_c = get_field('specialists_title_c') ?: 'Orthopedic Specialist';
+        $desc_c  = get_field('consulting_specialists_description_c') ?: 'Specialist in bones, joints, and muscle-related issues.';
+      ?>
       <div
         class="specialist-card cursor-pointer bg-white p-6 rounded-2xl border border-gray-200 shadow hover:bg-blue-600 hover:text-white transition duration-300"
-        data-title="<?php echo esc_attr(get_field('specialists_title_c')); ?>"
-        data-description="<?php echo esc_attr(get_field('consulting_specialists_description_c')); ?>"
+        data-title="<?php echo esc_attr($title_c); ?>"
+        data-description="<?php echo esc_attr($desc_c); ?>"
       >
         <div class="size-12 bg-blue-100 rounded-full text-blue-600 flex justify-center items-center mb-5">
           <span class="dashicons dashicons-heart text-[60px] leading-none"></span>
         </div>
-        <h3 class="font-bold text-lg mb-2"><?php echo esc_html(get_field('specialists_title_c')); ?></h3>
-        <p class="text-sm">
-          <?php echo esc_html( wp_trim_words( get_field('consulting_specialists_description_c'), 10, '...' ) ); ?>
-        </p>
+        <h3 class="font-bold text-lg mb-2"><?php echo esc_html($title_c); ?></h3>
+        <p class="text-sm"><?php echo esc_html(wp_trim_words($desc_c, 10, '...')); ?></p>
       </div>
 
       <!-- Specialist D -->
+      <?php 
+        $title_d = get_field('specialists_title_d') ?: 'Pediatric Specialist';
+        $desc_d  = get_field('consulting_specialists_description_d') ?: 'Focused on the medical needs of infants, children, and adolescents.';
+      ?>
       <div
         class="specialist-card cursor-pointer bg-white p-6 rounded-2xl border border-gray-200 shadow hover:bg-blue-600 hover:text-white transition duration-300"
-        data-title="<?php echo esc_attr(get_field('specialists_title_d')); ?>"
-        data-description="<?php echo esc_attr(get_field('consulting_specialists_description_d')); ?>"
+        data-title="<?php echo esc_attr($title_d); ?>"
+        data-description="<?php echo esc_attr($desc_d); ?>"
       >
         <div class="size-12 bg-blue-100 rounded-full text-blue-600 flex justify-center items-center mb-5">
           <span class="dashicons dashicons-heart text-[60px] leading-none"></span>
         </div>
-        <h3 class="font-bold text-lg mb-2"><?php echo esc_html(get_field('specialists_title_d')); ?></h3>
-        <p class="text-sm">
-          <?php echo esc_html( wp_trim_words( get_field('consulting_specialists_description_d'), 10, '...' ) ); ?>
-        </p>
+        <h3 class="font-bold text-lg mb-2"><?php echo esc_html($title_d); ?></h3>
+        <p class="text-sm"><?php echo esc_html(wp_trim_words($desc_d, 10, '...')); ?></p>
       </div>
 
     </div>
