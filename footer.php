@@ -1,5 +1,5 @@
 <footer class="bg-blue-600 text-white  mt-16 border-t border-gray-200">
-  <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-20 py-10">
+  <div class=" max-w-[1200px] container mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-20 py-10">
     <div>
       <a href="<?php echo home_url(); ?>" class="text-white font-bold text-xl">
         E-sheba
