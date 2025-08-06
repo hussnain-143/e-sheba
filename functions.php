@@ -29,6 +29,14 @@ class MedicalTheme {
             array(),
             '1.0'
         );
+        
+        wp_enqueue_script(
+            'main-script',
+            get_stylesheet_directory_uri() . '/src/js/script.js',
+            array('jquery'),
+            '1.0',
+            true 
+        );
 
         wp_enqueue_style('dashicons');
     }
