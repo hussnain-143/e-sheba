@@ -7,9 +7,8 @@
 </head>
 <body <?php body_class(); ?> class="bg-white text-gray-900 transition-colors duration-300">
 
-
 <header class="bg-blue-50 shadow sticky top-0 z-50 transition-colors duration-300">
-  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+  <div class="max-w-[1200px]  container mx-auto px-4 py-4 flex justify-between items-center">
 
 
     <a href="<?php echo home_url(); ?>" class="text-blue-600 font-bold text-3xl">
@@ -40,10 +39,8 @@
   </div>
 </header>
 
-
-
 <nav id="mobile-menu" class="hidden md:hidden bg-blue-200 shadow-lg py-4 space-y-2 transition-all duration-300 main-menu">
-   <div class="container mx-auto py-4 ">
+   <div class="container mx-auto py-4 px-4 ">
      <?php
         wp_nav_menu(array(
             'theme_location' => 'primary',
@@ -58,17 +55,6 @@
     </div>
    </div>
 </nav>
-
-
-
-<script>
-  const toggleBtn = document.getElementById('menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-
-  toggleBtn?.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-  });
-</script>
 
 <?php wp_footer(); ?>
 </body>

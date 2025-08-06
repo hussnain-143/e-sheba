@@ -2,12 +2,18 @@
 
 class MedicalTheme {
 
+    /**
+     * 
+     */
     public function __construct() {
 
         add_action('wp_enqueue_scripts', [$this, 'enqueue_styles']);
         add_action('after_setup_theme', [$this, 'register_menus']);
     }
 
+    /**
+     * set the theme Scripts
+     */
     public function enqueue_styles() {
 
         wp_enqueue_style(
@@ -27,6 +33,9 @@ class MedicalTheme {
         wp_enqueue_style('dashicons');
     }
 
+    /**
+     * Register the Theme Menus
+     */
     public function register_menus() {
 
         register_nav_menus(array(
